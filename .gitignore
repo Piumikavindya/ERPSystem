@@ -6,6 +6,23 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
+# Visual Studio
+.vs/
+**/.vs/
+
+# Build folders
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio cache
+*.vsidx
+
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
