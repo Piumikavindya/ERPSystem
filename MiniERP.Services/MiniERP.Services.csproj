@@ -6,4 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MiniERP.Core\MiniERP.Core.csproj" />
+    <ProjectReference Include="..\MiniERP.Repository\MiniERP.Repository.csproj" />
+    <ProjectReference Include="..\MiniERP.Shared\MiniERP.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

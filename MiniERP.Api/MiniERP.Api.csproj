@@ -10,4 +10,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MiniERP.Core\MiniERP.Core.csproj" />
+    <ProjectReference Include="..\MiniERP.Services\MiniERP.Services.csproj" />
+    <ProjectReference Include="..\MiniERP.Shared\MiniERP.Shared.csproj" />
+  </ItemGroup>
+
 </Project>
