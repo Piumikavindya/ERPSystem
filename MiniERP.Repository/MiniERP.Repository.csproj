@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.1.79" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MiniERP.Core\MiniERP.Core.csproj" />
     <ProjectReference Include="..\MiniERP.Infrastructure\MiniERP.Infrastructure.csproj" />
     <ProjectReference Include="..\MiniERP.Shared\MiniERP.Shared.csproj" />
