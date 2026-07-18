@@ -1,3 +1,9 @@
+using MiniERP.Core.Interfaces.Repositories;
+using MiniERP.Core.Interfaces.Services;
+using MiniERP.Infrastructure.Data;
+using MiniERP.Repository;
+using MiniERP.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +12,12 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Dependency Injection
+
+builder.Services.AddScoped<DapperContext>();
+builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 
 var app = builder.Build();
 
