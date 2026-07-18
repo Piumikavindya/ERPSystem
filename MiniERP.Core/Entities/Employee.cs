@@ -10,17 +10,16 @@ namespace MiniERP.Core.Entities
     {
         public int Id { get; set; }
 
-        public string EmployeeCode { get; set; } = string.Empty;
+     //   public string EmployeeCode { get; set; } = string.Empty;
 
-        public string FirstName { get; set; } = string.Empty;
-
-        public string LastName { get; set; } = string.Empty;
+        public string EmployeeName { get; set; } = string.Empty;
 
         public string Email { get; set; } = string.Empty;
 
         public decimal Salary { get; set; }
 
-        public int DepartmentId { get; set; }
+        public int DepartmentID { get; set; }
+        public DateTime JoiningDate { get; set; }
 
         public DateTime CreatedDate { get; set; }
 
