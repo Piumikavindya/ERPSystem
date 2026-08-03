@@ -29,7 +29,7 @@ namespace MiniERP.Services
                 Email = model.Email,
                 Salary = model.Salary,
                 JoiningDate = model.JoiningDate,
-
+                // can add additional feilds here. Now the client cannot manipulate those values.
                 IsActive = true,
                 CreatedDate = DateTime.Now
             };
