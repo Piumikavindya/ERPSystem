@@ -1,4 +1,5 @@
 ﻿using MiniERP.Core.DTOs.Employee;
+using MiniERP.Core.Entities;
 using MiniERP.Core.Interfaces.Repositories;
 using MiniERP.Core.Interfaces.Services;
 using MiniERP.Core.Models;
@@ -19,9 +20,26 @@ namespace MiniERP.Services
             _employeeRepository = employeeRepository;
         }
 
-        Task<int> IEmployeeService.CreateEmployee(EmployeeCreateModel model)
+        public async Task<int> CreateEmployee(EmployeeCreateModel model)
         {
-            throw new NotImplementedException();
+            var employee = new Employee
+            {
+                EmployeeName = model.EmployeeName,
+                DepartmentID = model.DepartmentID,
+                Email = model.Email,
+                Salary = model.Salary,
+                JoiningDate = model.JoiningDate,
+
+                IsActive = true,
+                CreatedDate = DateTime.Now
+            };
+
+            return await _employeeRepository.CreateEmployee(employee);
+        }
+
+       public async Task<EmployeeDto?> GetEmployeeById(int employeeId)
+        {
+            return await _employeeRepository.GetEmployeeById(employeeId);
         }
 
         Task IEmployeeService.DeleteEmployee(int employeeId)
@@ -30,11 +48,6 @@ namespace MiniERP.Services
         }
 
         Task<List<EmployeeDto>> IEmployeeService.GetAllEmployees()
-        {
-            throw new NotImplementedException();
-        }
-
-        Task<EmployeeDetailsDto?> IEmployeeService.GetEmployeeById(int employeeId)
         {
             throw new NotImplementedException();
         }
