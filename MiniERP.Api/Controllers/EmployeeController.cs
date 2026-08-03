@@ -20,7 +20,14 @@ namespace MiniERP.Api.Controllers
         public async Task<IActionResult> CreateEmployee(EmployeeCreateModel model)
         {
             var employeeID = await _employeeService.CreateEmployee(model);
-            return Ok(employeeID);
+            return CreatedAtAction(
+        nameof(GetEmployee),
+        new { id = employeeId },
+        new
+        {
+            EmployeeID = employeeId,
+            Message = "Employee created successfully."
+        });
         }
     }
 }
