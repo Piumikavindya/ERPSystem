@@ -30,7 +30,7 @@ namespace MiniERP.Services
                 Salary = model.Salary,
                 JoiningDate = model.JoiningDate,
                 // can add additional feilds here. Now the client cannot manipulate those values.
-                IsActive = true,
+                //IsActive = true,
                 CreatedDate = DateTime.Now
             };
 
@@ -42,15 +42,16 @@ namespace MiniERP.Services
             return await _employeeRepository.GetEmployeeById(employeeId);
         }
 
+       public async Task<List<EmployeeDto>> GetEmployees()
+        {
+            return await _employeeRepository.GetEmployees();
+        }
         Task IEmployeeService.DeleteEmployee(int employeeId)
         {
             throw new NotImplementedException();
         }
 
-        Task<List<EmployeeDto>> IEmployeeService.GetAllEmployees()
-        {
-            throw new NotImplementedException();
-        }
+        
 
         Task IEmployeeService.UpdateEmployee(EmployeeUpdateModel model)
         {

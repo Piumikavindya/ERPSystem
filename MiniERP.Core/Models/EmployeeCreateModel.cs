@@ -18,10 +18,10 @@ namespace MiniERP.Core.Models
 
         public DateTime JoiningDate { get; set; }
         // Audit fields
-        public int CreatedBy { get; set; }
+       // public int CreatedBy { get; set; }
 
-        public DateTime CreatedDate { get; set; }
+       // public DateTime CreatedDate { get; set; }
 
-        public bool IsActive { get; set; }
+      //  public bool IsActive { get; set; }
     }
 }
