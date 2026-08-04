@@ -1,4 +1,5 @@
-﻿using MiniERP.Core.Entities;
+﻿using MiniERP.Core.DTOs.Employee;
+using MiniERP.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace MiniERP.Core.Interfaces.Repositories
 
         Task DeleteEmployee(int employeeId);
 
-        Task<Employee?> GetEmployeeById(int employeeId);
+        Task<EmployeeDto?> GetEmployeeById(int employeeId);
 
         Task<List<Employee>> GetAllEmployees();
     }

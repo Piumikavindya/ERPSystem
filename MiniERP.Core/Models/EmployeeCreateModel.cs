@@ -8,16 +8,15 @@ namespace MiniERP.Core.Models
 {
     public class EmployeeCreateModel
     {
-        public string FirstName { get; set; } = string.Empty;
+        public string EmployeeName { get; set; }
 
-        public string LastName { get; set; } = string.Empty;
+        public int DepartmentID { get; set; }
 
-        public string Email { get; set; } = string.Empty;
+        public string Email { get; set; }
 
         public decimal Salary { get; set; }
 
-        public int DepartmentId { get; set; }
-
+        public DateTime JoiningDate { get; set; }
         // Audit fields
         public int CreatedBy { get; set; }
 

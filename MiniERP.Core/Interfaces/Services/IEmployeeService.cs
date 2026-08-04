@@ -16,7 +16,7 @@ namespace MiniERP.Core.Interfaces.Services
 
         Task DeleteEmployee(int employeeId);
 
-        Task<EmployeeDetailsDto?> GetEmployeeById(int employeeId);
+        Task<EmployeeDto?> GetEmployeeById(int employeeId);
 
         Task<List<EmployeeDto>> GetAllEmployees();
 
