@@ -12,9 +12,9 @@ namespace MiniERP.Core.Interfaces.Repositories
     {
         Task<int> CreateEmployee(Employee entity);
 
-        Task UpdateEmployee(Employee entity);
+        Task<int> UpdateEmployee(Employee entity);
 
-        Task DeleteEmployee(int employeeId);
+        Task<int> DeleteEmployee(int employeeId);
 
         Task<EmployeeDto?> GetEmployeeById(int employeeId);
 
