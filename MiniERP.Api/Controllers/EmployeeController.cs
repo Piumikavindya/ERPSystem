@@ -44,6 +44,14 @@ namespace MiniERP.Api.Controllers
             return Ok(employee);
         }
 
+        [HttpGet]
+        public async Task<ActionResult<List<EmployeeDto>>> GetEmployees()
+        {
+            var employees = await _employeeService.GetEmployees();
+
+            return Ok(employees);
+        }
+
 
     }
 }

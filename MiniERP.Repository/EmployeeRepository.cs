@@ -36,6 +36,10 @@ namespace MiniERP.Repository
 
             parameters.Add("@JoiningDate", entity.JoiningDate);
 
+            parameters.Add("@CreatedDate", entity.CreatedDate);
+
+           
+
             var employeeId = await connection.ExecuteScalarAsync<int>("CreateEmployee", parameters, commandType: CommandType.StoredProcedure);
 
             return employeeId;
@@ -55,12 +59,22 @@ namespace MiniERP.Repository
             return employee;
         }
 
-        Task IEmployeeRepository.DeleteEmployee(int employeeId)
+       public async Task<List<Employee>> GetEmployees()
         {
-            throw new NotImplementedException();
+            using var connection = _dapperContext.CreateConnection();
+
+            var parameters = new DynamicParameters();
+
+            var employees = await connection.QueryAsync<List<Employee>>("GetEmployees", parameters, commandType: CommandType.StoredProcedure);
+
+            var newEmployees = new List<EmployeeDto>();
+
+
+            return (List<Employee>)employees;
         }
 
-        Task<List<Employee>> IEmployeeRepository.GetAllEmployees()
+
+        Task IEmployeeRepository.DeleteEmployee(int employeeId)
         {
             throw new NotImplementedException();
         }
