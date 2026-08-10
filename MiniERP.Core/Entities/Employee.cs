@@ -8,7 +8,7 @@ namespace MiniERP.Core.Entities
 {
     public class Employee
     {
-        public int Id { get; set; }
+        public int EmployeeId { get; set; }
 
      //   public string EmployeeCode { get; set; } = string.Empty;
 

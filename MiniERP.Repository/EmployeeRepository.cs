@@ -20,9 +20,10 @@ namespace MiniERP.Repository
             _dapperContext = dapperContext;
         }
 
-        public async Task<int> CreateEmployee(Employee entity) { 
-        
-        using var connection = _dapperContext.CreateConnection();
+        public async Task<int> CreateEmployee(Employee entity)
+        {
+
+            using var connection = _dapperContext.CreateConnection();
 
             var parameters = new DynamicParameters();
 
@@ -38,12 +39,10 @@ namespace MiniERP.Repository
 
             parameters.Add("@CreatedDate", entity.CreatedDate);
 
-           
 
             var employeeId = await connection.ExecuteScalarAsync<int>("CreateEmployee", parameters, commandType: CommandType.StoredProcedure);
 
             return employeeId;
-
 
         }
 
@@ -54,34 +53,57 @@ namespace MiniERP.Repository
             var parameters = new DynamicParameters();
             parameters.Add("@EmployeeID", employeeId);
 
-            var employee = await connection.QueryFirstOrDefaultAsync<EmployeeDto>( "GetEmployeeById", parameters, commandType: CommandType.StoredProcedure);
+            var employee = await connection.QueryFirstOrDefaultAsync<EmployeeDto>("GetEmployeeById", parameters, commandType: CommandType.StoredProcedure);
 
             return employee;
         }
 
-       public async Task<List<Employee>> GetEmployees()
+        public async Task<int> UpdateEmployee(Employee entity)
         {
             using var connection = _dapperContext.CreateConnection();
 
             var parameters = new DynamicParameters();
 
-            var employees = await connection.QueryAsync<List<Employee>>("GetEmployees", parameters, commandType: CommandType.StoredProcedure);
+            parameters.Add("GetEmployeeById", entity.EmployeeId);
+            parameters.Add("@EmployeeName", entity.EmployeeName);
 
-            var newEmployees = new List<EmployeeDto>();
+            parameters.Add("@DepartmentID", entity.DepartmentID);
+
+            parameters.Add("@Email", entity.Email);
+
+            parameters.Add("@Salary", entity.Salary);
+
+            parameters.Add("@JoiningDate", entity.JoiningDate);
 
 
-            return (List<Employee>)employees;
+            var rowsAffected = await connection.ExecuteScalarAsync<int>("UpdateEmployee", parameters, commandType: CommandType.StoredProcedure);
+    
+            return rowsAffected;
         }
 
 
-        Task IEmployeeRepository.DeleteEmployee(int employeeId)
+        public async Task<IEnumerable<EmployeeDto>> GetEmployees()
         {
-            throw new NotImplementedException();
+            using var connection = _dapperContext.CreateConnection();
+
+            var employees = await connection.QueryAsync<EmployeeDto>("GetEmployees", commandType: CommandType.StoredProcedure);
+
+            return employees;
         }
 
-        Task IEmployeeRepository.UpdateEmployee(Employee entity)
+
+        public async Task<int> DeleteEmployee(int employeeId)
         {
-            throw new NotImplementedException();
+            var connection = _dapperContext.CreateConnection();
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("EmployeeID", employeeId);
+
+            var emp = await connection.ExecuteScalarAsync<int>("DeleteEmployees", parameters, commandType: CommandType.StoredProcedure);
+
+            return emp;
         }
-    }
+
+    }  
 }

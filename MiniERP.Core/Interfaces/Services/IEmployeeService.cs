@@ -12,13 +12,13 @@ namespace MiniERP.Core.Interfaces.Services
     {
         Task<int> CreateEmployee(EmployeeCreateModel model);
 
-        Task UpdateEmployee(EmployeeUpdateModel model);
+        Task<int> UpdateEmployee(EmployeeUpdateModel model);
 
-        Task DeleteEmployee(int employeeId);
+        Task<int> DeleteEmployee(int employeeId);
 
         Task<EmployeeDto?> GetEmployeeById(int employeeId);
 
-        Task<List<EmployeeDto>> GetEmployees();
+        Task<IEnumerable<EmployeeDto>> GetEmployees();
 
     }
 }

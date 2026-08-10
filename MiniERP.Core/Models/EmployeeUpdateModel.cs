@@ -16,7 +16,7 @@ namespace MiniERP.Core.Models
 
         public string? Email { get; set; }
 
-        public decimal? Salary { get; set; }
+        public decimal Salary { get; set; }
 
         public DateTime JoiningDate { get; set; }
     }

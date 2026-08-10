@@ -42,20 +42,37 @@ namespace MiniERP.Services
             return await _employeeRepository.GetEmployeeById(employeeId);
         }
 
-       public async Task<List<EmployeeDto>> GetEmployees()
+        public async Task<int> UpdateEmployee(EmployeeUpdateModel model)
+        {
+            var employeeEntity = new Employee
+            {
+                EmployeeId = model.EmployeeID,
+                EmployeeName = model.EmployeeName,
+                DepartmentID = model.DepartmentID,
+                Email = model.Email,
+                Salary = model.Salary,
+                JoiningDate = model.JoiningDate,
+            };
+
+            var employee = await _employeeRepository.UpdateEmployee(employeeEntity);
+
+            return employee;
+
+            
+        }
+
+        public async Task<IEnumerable<EmployeeDto>> GetEmployees()
         {
             return await _employeeRepository.GetEmployees();
         }
-        Task IEmployeeService.DeleteEmployee(int employeeId)
+        public async Task<int> DeleteEmployee(int employeeId)
         {
-            throw new NotImplementedException();
+            return await _employeeRepository.DeleteEmployee(employeeId);
+
         }
 
-        
 
-        Task IEmployeeService.UpdateEmployee(EmployeeUpdateModel model)
-        {
-            throw new NotImplementedException();
-        }
+
+
     }
 }

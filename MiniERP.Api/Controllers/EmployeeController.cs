@@ -52,6 +52,35 @@ namespace MiniERP.Api.Controllers
             return Ok(employees);
         }
 
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateEmployee(int id, EmployeeUpdateModel model)
+        {
+            if (id != model.EmployeeID)
+            {
+                return BadRequest("Route ID and Employee ID do not match.");
+            }
 
+            var rowsAffected = await _employeeService.UpdateEmployee(model);
+
+            if (rowsAffected == 0)
+            {
+                return NotFound("Employee not found.");
+            }
+
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteEmployee(int id)
+        {
+            var rowsAffected = await _employeeService.DeleteEmployee(id);
+
+            if (rowsAffected == 0)
+            {
+                return NotFound($"Employee with ID {id} was not found.");
+            }
+
+            return NoContent();
+        }
     }
 }
