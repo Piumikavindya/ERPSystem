@@ -82,18 +82,13 @@ namespace MiniERP.Repository
         }
 
 
-        public async Task<List<Employee>> GetEmployees()
+        public async Task<IEnumerable<EmployeeDto>> GetEmployees()
         {
             using var connection = _dapperContext.CreateConnection();
 
-            var parameters = new DynamicParameters();
+            var employees = await connection.QueryAsync<EmployeeDto>("GetEmployees", commandType: CommandType.StoredProcedure);
 
-            var employees = await connection.QueryAsync<List<Employee>>("GetEmployees", parameters, commandType: CommandType.StoredProcedure);
-
-            var newEmployees = new List<EmployeeDto>();
-
-
-            return (List<Employee>)employees;
+            return employees;
         }
 
 

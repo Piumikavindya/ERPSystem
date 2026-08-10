@@ -18,7 +18,7 @@ namespace MiniERP.Core.Interfaces.Services
 
         Task<EmployeeDto?> GetEmployeeById(int employeeId);
 
-        Task<List<EmployeeDto>> GetEmployees();
+        Task<IEnumerable<EmployeeDto>> GetEmployees();
 
     }
 }

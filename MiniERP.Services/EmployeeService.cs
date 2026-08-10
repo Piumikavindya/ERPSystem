@@ -61,7 +61,7 @@ namespace MiniERP.Services
             
         }
 
-        public async Task<List<EmployeeDto>> GetEmployees()
+        public async Task<IEnumerable<EmployeeDto>> GetEmployees()
         {
             return await _employeeRepository.GetEmployees();
         }
