@@ -100,7 +100,7 @@ namespace MiniERP.Repository
 
             parameters.Add("EmployeeID", employeeId);
 
-            var emp = await connection.ExecuteScalarAsync<int>("DeleteEmployees", parameters, commandType: CommandType.StoredProcedure);
+            var emp = await connection.ExecuteScalarAsync<int>("DeleteEmployee", parameters, commandType: CommandType.StoredProcedure);
 
             return emp;
         }
