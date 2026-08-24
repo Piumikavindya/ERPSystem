@@ -1,3 +1,4 @@
+using MiniERP.Api.Middleware;
 using MiniERP.Core.Interfaces.Repositories;
 using MiniERP.Core.Interfaces.Services;
 using MiniERP.Infrastructure.Data;
@@ -31,6 +32,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseMiddleware<RequestLoggingMiddleware>();
 
 app.MapControllers();
 
